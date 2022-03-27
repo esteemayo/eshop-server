@@ -1,0 +1,112 @@
+[
+  {
+    "_id": "623f3fc43d1885dbe46dba61",
+    "name": "Emmanuel Adebayo",
+    "username": "esteemayo",
+    "email": "admin@eshop.com",
+    "role": "admin",
+    "password": "$2a$12$t.YeAMTM/Ec/oLJMN7ednOnP85pwngtJtqe6RgnQZ78BLifBnPP4O",
+    "img": "https://firebasestorage.googleapis.com/v0/b/eshop-4647b.appspot.com/o/1648312246168IMG_6506.JPG?alt=media&token=f8d84806-5dfb-4932-b999-88a830436ed1",
+    "createdAt": "2022-01-26T16:00:00.202Z",
+    "updatedAt": "2022-01-26T16:00:00.202Z"
+  },
+  {
+    "_id": "623f3c9f3d1885dbe46dba36",
+    "name": "Maye Wintheiser",
+    "username": "maye",
+    "email": "maye.admin@eshop.com",
+    "role": "admin",
+    "password": "$2a$12$ldocynkE.wYanFJsXoZKhOYhCv8Y7BKQay3O75jR2UC1L3Ftlkhne",
+    "img": "https://firebasestorage.googleapis.com/v0/b/eshop-4647b.appspot.com/o/1648311453840user-13.jpg?alt=media&token=cb48542c-1ea8-44ce-b0e8-0b02d12d10af",
+    "createdAt": "2022-01-26T16:17:35.923Z",
+    "updatedAt": "2022-01-26T16:17:35.923Z"
+  },
+  {
+    "_id": "623f3b183d1885dbe46dba2a",
+    "name": "John Doe",
+    "username": "jdoe",
+    "email": "jdoe@example.com",
+    "role": "user",
+    "password": "$2a$12$CTuap06uGaRpok9MGS0H4ux/rv7ffpZjJ3CjblQ182xWpCSMRbhUy",
+    "img": "https://firebasestorage.googleapis.com/v0/b/eshop-4647b.appspot.com/o/1648311059164user-18.jpg?alt=media&token=d526a4f7-61e8-4c8e-bf30-84a0167ef39d",
+    "createdAt": "2022-02-26T16:11:04.170Z",
+    "updatedAt": "2022-02-26T16:11:04.170Z"
+  },
+  {
+    "_id": "623f3b603d1885dbe46dba2d",
+    "name": "Mary Doe",
+    "username": "mdoe",
+    "email": "mdoe@example.com",
+    "role": "user",
+    "password": "$2a$12$bkaLUzVXy/mDwhOvNdhO0e7BI/n1D.//zQpqkKnNKaNjmGISejXrS",
+    "img": "https://firebasestorage.googleapis.com/v0/b/eshop-4647b.appspot.com/o/1648311131488user-14.jpg?alt=media&token=7f662510-0dea-44e2-a72e-be63d0b146db",
+    "createdAt": "2022-02-26T16:12:16.532Z",
+    "updatedAt": "2022-02-26T16:12:16.532Z"
+  },
+  {
+    "_id": "623f3bce3d1885dbe46dba30",
+    "name": "Cristian Vega",
+    "username": "chris",
+    "email": "chris@example.com",
+    "role": "user",
+    "password": "$2a$12$A2GO2y3WI3n3.c.HmmGk1u.Smv27RQ6fPshLDd2uHyX3YjE9jqQEy",
+    "img": "https://firebasestorage.googleapis.com/v0/b/eshop-4647b.appspot.com/o/1648311237971user-9.jpg?alt=media&token=b950e16f-f9d8-4049-8932-f382a5490e44",
+    "createdAt": "2022-02-26T16:14:06.400Z",
+    "updatedAt": "2022-02-26T16:14:06.400Z"
+  },
+  {
+    "_id": "623f3c0f3d1885dbe46dba33",
+    "name": "Lourdes Browning",
+    "username": "loulou",
+    "email": "loulou@example.com",
+    "role": "user",
+    "password": "$2a$12$hgFleoFiG.TwaWZqL50AReLQcg6U1U1wyAzP0GMi8H8p9BorByEb6",
+    "img": "https://firebasestorage.googleapis.com/v0/b/eshop-4647b.appspot.com/o/1648311303911user-7.jpg?alt=media&token=6e22d7f8-ecc1-4e27-a6ee-89f4ccd2e40d",
+    "createdAt": "2022-02-26T16:15:11.889Z",
+    "updatedAt": "2022-02-26T16:15:11.889Z"
+  },
+  {
+    "_id": "623f3ce63d1885dbe46dba39",
+    "name": "Alexander Jones",
+    "username": "alex",
+    "email": "alex@example.com",
+    "role": "user",
+    "password": "$2a$12$ocz/QETio2Pn3ycLf1FYlO0FTpeP1S9e/g4/gpssWIAl/uicb5W7C",
+    "img": "https://firebasestorage.googleapis.com/v0/b/eshop-4647b.appspot.com/o/1648311518887user-12.jpg?alt=media&token=ce9be8d3-0131-4e02-977c-58931165ad1f",
+    "createdAt": "2022-03-26T16:18:46.275Z",
+    "updatedAt": "2022-03-26T16:18:46.275Z"
+  },
+  {
+    "_id": "623f3daf3d1885dbe46dba58",
+    "name": "Alice Doe",
+    "username": "alice",
+    "email": "alice@example.com",
+    "role": "user",
+    "password": "$2a$12$j4DbXOwp1YCIKg.KcV2gdud.VRNRVdcyRd.RhLf6rUSTc.Tt1dqpy",
+    "img": "https://firebasestorage.googleapis.com/v0/b/eshop-4647b.appspot.com/o/1648311720048user-20.jpg?alt=media&token=624e0c09-a0f4-43b6-b4aa-e7ef17a62411",
+    "createdAt": "2022-03-26T16:22:07.288Z",
+    "updatedAt": "2022-03-26T16:22:07.288Z"
+  },
+  {
+    "_id": "623f3ddf3d1885dbe46dba5b",
+    "name": "Aarav Lynn",
+    "username": "aarav",
+    "email": "aarav@example.com",
+    "role": "user",
+    "password": "$2a$12$mixs6ymGAnBDLkqiT/2.BudzTblu81My.EIycy9VG/I27g7JM8sgq",
+    "img": "https://firebasestorage.googleapis.com/v0/b/eshop-4647b.appspot.com/o/1648311770120user-19.jpg?alt=media&token=9d6269bd-6973-4113-9f91-61cdd39585e4",
+    "createdAt": "2022-03-26T16:22:55.324Z",
+    "updatedAt": "2022-03-26T16:22:55.324Z"
+  },
+  {
+    "_id": "623f3e353d1885dbe46dba5e",
+    "name": "Eliana Stout",
+    "username": "eliana",
+    "email": "eliana@example.com",
+    "role": "user",
+    "password": "$2a$12$kzuXCgvRL9TS0PBBG3.W1e9f1IjcfiljvR.BdgaiCIuCYktC2eI6G",
+    "img": "https://firebasestorage.googleapis.com/v0/b/eshop-4647b.appspot.com/o/1648311851792users-5e814abbcea36d14a4fd8c5d-1585531818663.jpeg?alt=media&token=b11978c0-f9a0-496d-a636-bf1f6911389a",
+    "createdAt": "2022-03-26T16:24:21.836Z",
+    "updatedAt": "2022-03-26T16:24:21.836Z"
+  }
+]
