@@ -4,7 +4,7 @@ import Product from '../models/Product.js';
 import asyncWrapper from '../utils/asyncWrapper.js';
 import NotFoundError from '../errors/notFound.js';
 
-exports.getAllProducts = asyncWrapper(async (req, res, next) => {
+export const getAllProducts = asyncWrapper(async (req, res, next) => {
   const qNew = req.query.new;
   const cat = req.query.category;
   let products;
@@ -25,7 +25,7 @@ exports.getAllProducts = asyncWrapper(async (req, res, next) => {
   });
 });
 
-exports.getProductById = asyncWrapper(async (req, res, next) => {
+export const getProductById = asyncWrapper(async (req, res, next) => {
   const { id: prodID } = req.params;
 
   const product = await Product.findById(prodID);
@@ -42,7 +42,7 @@ exports.getProductById = asyncWrapper(async (req, res, next) => {
   });
 });
 
-exports.getProductBySlug = asyncWrapper(async (req, res, next) => {
+export const getProductBySlug = asyncWrapper(async (req, res, next) => {
   const { slug } = req.params;
 
   const product = await Product.findOne({ slug });
@@ -59,7 +59,7 @@ exports.getProductBySlug = asyncWrapper(async (req, res, next) => {
   });
 });
 
-exports.createProduct = asyncWrapper(async (req, res, next) => {
+export const createProduct = asyncWrapper(async (req, res, next) => {
   const product = await Product.create({ ...req.body });
 
   res.status(StatusCodes.CREATED).json({
@@ -68,7 +68,7 @@ exports.createProduct = asyncWrapper(async (req, res, next) => {
   });
 });
 
-exports.updateProduct = asyncWrapper(async (req, res, next) => {
+export const updateProduct = asyncWrapper(async (req, res, next) => {
   const { id: prodID } = req.params;
 
   const updProduct = await Product.findByIdAndUpdate(
@@ -92,7 +92,7 @@ exports.updateProduct = asyncWrapper(async (req, res, next) => {
   });
 });
 
-exports.deleteProduct = asyncWrapper(async (req, res, next) => {
+export const deleteProduct = asyncWrapper(async (req, res, next) => {
   const { id: prodID } = req.params;
 
   const product = await Product.findByIdAndDelete(prodID);
@@ -109,7 +109,7 @@ exports.deleteProduct = asyncWrapper(async (req, res, next) => {
   });
 });
 
-exports.searchProduct = asyncWrapper(async (req, res, next) => {
+export const searchProduct = asyncWrapper(async (req, res, next) => {
   const products = await Product.find(
     {
       $text: {
