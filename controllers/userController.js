@@ -1,11 +1,11 @@
-const _ = require('lodash');
-const { StatusCodes } = require('http-status-codes');
+import _ from 'lodash';
+import { StatusCodes } from 'http-status-codes';
 
-const User = require('../models/User');
-const factory = require('./handlerFactory');
-const asyncWrapper = require('../utils/asyncWrapper');
-const BadRequestError = require('../errors/badRequest');
-const createSendToken = require('../middlewares/createSendToken');
+import User from '../models/User.js';
+import factory from './handlerFactory.js';
+import asyncWrapper from '../utils/asyncWrapper.js';
+import BadRequestError from '../errors/badRequest.js';
+import createSendToken from '../middlewares/createSendToken.js';
 
 exports.updateMe = asyncWrapper(async (req, res, next) => {
   const { password, passwordConfirm } = req.body;
@@ -13,8 +13,7 @@ exports.updateMe = asyncWrapper(async (req, res, next) => {
   if (password || passwordConfirm) {
     return next(
       new BadRequestError(
-        `This route is not for password updates. Please use update ${
-          req.protocol
+        `This route is not for password updates. Please use update ${req.protocol
         }://${req.get('host')}/api/v1/auth/update-my-password`
       )
     );
