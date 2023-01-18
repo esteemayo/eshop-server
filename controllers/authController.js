@@ -5,13 +5,13 @@ import { promisify } from 'util';
 import { StatusCodes } from 'http-status-codes';
 
 import User from '../models/User.js';
-import sendEmail from '../utils/email.js';
 import NotFoundError from '../errors/notFound.js';
+import sendEmail from '../utils/email.js';
 import asyncWrapper from '../utils/asyncWrapper.js';
-import ForbiddenError from '../errors/forbidden.js';
 import BadRequestError from '../errors/badRequest.js';
-import CustomAPIError from '../errors/customApiError.js';
+import ForbiddenError from '../errors/forbidden.js';
 import createSendToken from '../middlewares/createSendToken.js';
+import CustomAPIError from '../errors/customApiError.js';
 import UnauthenticatedError from '../errors/unauthenticated.js';
 
 export const register = asyncWrapper(async (req, res, next) => {
