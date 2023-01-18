@@ -1,6 +1,6 @@
-const express = require('express');
+import express from 'express';
 
-const authController = require('../controllers/authController');
+import * as authController from '../controllers/authController.js';
 
 const router = express.Router();
 
@@ -18,4 +18,4 @@ router.patch(
   authController.updatePassword
 );
 
-module.exports = router;
+export default router;
