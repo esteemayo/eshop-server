@@ -1,4 +1,4 @@
-const { StatusCodes } = require('http-status-codes');
+import { StatusCodes } from 'http-status-codes';
 
 const handleCastErrorDB = (customError, err) => {
   customError.message = `No item found with ID: ${err.value}`;
@@ -6,7 +6,7 @@ const handleCastErrorDB = (customError, err) => {
 };
 
 const handleDuplicateFieldsDB = (customError, err) => {
-  const value = err.message.match(/(["'])(\\?.)/)[0];
+  const value = err.message.match(/(["'])(?:(?=(\\?))\2.)*?\1/)[0];
   customError.message = `Duplicate field value: ${value}, Please use another value!`;
   customError.statusCode = StatusCodes.BAD_REQUEST;
 };
@@ -28,20 +28,18 @@ const handleJWTExpiredError = (customError) => {
   customError.statusCode = StatusCodes.UNAUTHORIZED;
 };
 
-const sendErrorDev = (err, res) => {
-  return res.status(err.statusCode).json({
+const sendErrorDev = (err, res) =>
+  res.status(err.statusCode).json({
     status: err.status,
     message: err.message,
     stack: err.stack,
   });
-};
 
-const sendErrorProd = (err, res) => {
-  return res.status(err.statusCode).json({
+const sendErrorProd = (err, res) =>
+  res.status(err.statusCode).json({
     status: err.status,
     message: err.message,
   });
-};
 
 const errorHandlerMiddleware = (err, req, res, next) => {
   const customError = {
@@ -64,4 +62,4 @@ const errorHandlerMiddleware = (err, req, res, next) => {
   }
 };
 
-module.exports = errorHandlerMiddleware;
+export default errorHandlerMiddleware;
