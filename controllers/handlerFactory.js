@@ -1,8 +1,8 @@
-const { StatusCodes } = require('http-status-codes');
+import { StatusCodes } from 'http-status-codes';
 
-const APIFeatures = require('../utils/apiFeatures');
-const NotFoundError = require('../errors/notFound');
-const asyncWrapper = require('../utils/asyncWrapper');
+import APIFeatures from '../utils/apiFeatures.js';
+import asyncWrapper from '../utils/asyncWrapper.js';
+import NotFoundError from '../errors/notFound.js';
 
 exports.getAll = (Model) =>
   asyncWrapper(async (req, res, next) => {
