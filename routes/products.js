@@ -1,6 +1,6 @@
 import express from 'express';
 
-import * as authController from '../controllers/authController.js';
+import authMiddleware from '../middlewares/authMiddleware.js';
 import * as productController from '../controllers/productController.js';
 
 const router = express.Router();
@@ -13,8 +13,8 @@ router
   .route('/')
   .get(productController.getAllProducts)
   .post(
-    authController.protect,
-    authController.restrictTo('admin'),
+    authMiddleware.protect,
+    authMiddleware.restrictTo('admin'),
     productController.createProduct
   );
 
@@ -22,13 +22,13 @@ router
   .route('/:id')
   .get(productController.getProductById)
   .patch(
-    authController.protect,
-    authController.restrictTo('admin'),
+    authMiddleware.protect,
+    authMiddleware.restrictTo('admin'),
     productController.updateProduct
   )
   .delete(
-    authController.protect,
-    authController.restrictTo('admin'),
+    authMiddleware.protect,
+    authMiddleware.restrictTo('admin'),
     productController.deleteProduct
   );
 
