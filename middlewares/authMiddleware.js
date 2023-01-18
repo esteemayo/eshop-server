@@ -2,6 +2,7 @@ import jwt from 'jsonwebtoken';
 import { promisify } from 'util';
 
 import User from '../models/User.js';
+import asyncWrapper from '../utils/asyncWrapper.js';
 import ForbiddenError from '../errors/forbidden.js';
 
 const protect = asyncWrapper(async (req, res, next) => {
