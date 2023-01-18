@@ -12,8 +12,8 @@ process.on('uncaughtException', (err) => {
 app.set('port', process.env.PORT || 8080);
 
 const server = app.listen(app.get('port'), async () => {
-  await connectDB(mongoURI);
-  console.log(`Server running on port ${server.address().port}`.blue.bold)
+  await connectDB();
+  console.log(`Server running on port ${server.address().port}`.blue.bold);
 });
 
 process.on('unhandledRejection', (err) => {
