@@ -1,5 +1,7 @@
-const dotenv = require('dotenv');
-require('colors');
+import 'colors';
+
+import app from './app.js';
+import connectDB from './db/connectDb.js';
 
 process.on('uncaughtException', (err) => {
   console.log('UNCAUGHT EXCEPTION! 🔥 Shutting down...'.red.bold);
