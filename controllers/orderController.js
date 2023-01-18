@@ -4,7 +4,7 @@ import Order from '../models/Order.js';
 import asyncWrapper from '../utils/asyncWrapper.js';
 import NotFoundError from '../errors/notFound.js';
 
-exports.getAllOrders = asyncWrapper(async (req, res, next) => {
+export const getAllOrders = asyncWrapper(async (req, res, next) => {
   const orders = await Order.find();
 
   res.status(StatusCodes.OK).json({
@@ -15,7 +15,7 @@ exports.getAllOrders = asyncWrapper(async (req, res, next) => {
   });
 });
 
-exports.getOrder = asyncWrapper(async (req, res, next) => {
+export const getOrder = asyncWrapper(async (req, res, next) => {
   const { id: orderID } = req.params;
 
   const order = await Order.findById(orderID);
@@ -32,7 +32,7 @@ exports.getOrder = asyncWrapper(async (req, res, next) => {
   });
 });
 
-exports.getUserOrder = asyncWrapper(async (req, res, next) => {
+export const getUserOrder = asyncWrapper(async (req, res, next) => {
   const { id: userID } = req.user;
 
   const orders = await Order.find({ user: userID });
@@ -43,7 +43,7 @@ exports.getUserOrder = asyncWrapper(async (req, res, next) => {
   });
 });
 
-exports.createOrder = asyncWrapper(async (req, res, next) => {
+export const createOrder = asyncWrapper(async (req, res, next) => {
   if (!req.body.user) req.body.user = req.user.id;
 
   const order = await Order.create({ ...req.body });
@@ -54,7 +54,7 @@ exports.createOrder = asyncWrapper(async (req, res, next) => {
   });
 });
 
-exports.updateOrder = asyncWrapper(async (req, res, next) => {
+export const updateOrder = asyncWrapper(async (req, res, next) => {
   const { id: orderID } = req.params;
 
   const updOrder = await Order.findByIdAndUpdate(
@@ -78,7 +78,7 @@ exports.updateOrder = asyncWrapper(async (req, res, next) => {
   });
 });
 
-exports.deleteOrder = asyncWrapper(async (req, res, next) => {
+export const deleteOrder = asyncWrapper(async (req, res, next) => {
   const { id: orderID } = req.params;
 
   const order = await Order.findByIdAndDelete(orderID);
@@ -95,7 +95,7 @@ exports.deleteOrder = asyncWrapper(async (req, res, next) => {
   });
 });
 
-exports.getMonthlyIncome = asyncWrapper(async (req, res, next) => {
+export const getMonthlyIncome = asyncWrapper(async (req, res, next) => {
   const productId = req.query.pid;
   const date = new Date();
   const lastMonth = new Date(date.setMonth(date.getMonth() - 1));
