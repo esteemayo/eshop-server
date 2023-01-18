@@ -1,6 +1,8 @@
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 
+dotenv.config({ path: './config.env' });
+
 const devEnv = process.env !== 'production';
 const { DATABASE, DATABASE_LOCAL, DATABASE_PASSWORD } = process.env;
 
@@ -19,7 +21,7 @@ const connectDB = async () => {
 };
 
 mongoose.connection.on('disconnected', () => {
-  console.log('MongoDB disconnected');
+  console.log('MongoDB disconnected'.strikethrough);
   ;
 })
 
