@@ -1,7 +1,7 @@
-const express = require('express');
+import express from 'express';
 
-const authController = require('../controllers/authController');
-const cartController = require('../controllers/cartController');
+import *as authController from '../controllers/authController.js';
+import *as cartController from '../controllers/cartController.js';
 
 const router = express.Router();
 
@@ -20,4 +20,4 @@ router
   .patch(cartController.updateCart)
   .delete(cartController.deleteCart);
 
-module.exports = router;
+export default router;
