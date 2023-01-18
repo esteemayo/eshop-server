@@ -1,8 +1,8 @@
-const { StatusCodes } = require('http-status-codes');
+import { StatusCodes } from 'http-status-codes';
 
-const Cart = require('../models/Cart');
-const NotFoundError = require('../errors/notFound');
-const asyncWrapper = require('../utils/asyncWrapper');
+import Cart from '../models/Cart.js';
+import asyncWrapper from '../utils/asyncWrapper.js';
+import NotFoundError from '../errors/notFound.js';
 
 exports.getAllCarts = asyncWrapper(async (req, res, next) => {
   const carts = await Cart.find();
