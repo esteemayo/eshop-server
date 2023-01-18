@@ -4,7 +4,7 @@ import APIFeatures from '../utils/apiFeatures.js';
 import asyncWrapper from '../utils/asyncWrapper.js';
 import NotFoundError from '../errors/notFound.js';
 
-exports.getAll = (Model) =>
+export const getAll = (Model) =>
   asyncWrapper(async (req, res, next) => {
     const features = new APIFeatures(Model.find(), req.query)
       .filter()
@@ -22,7 +22,7 @@ exports.getAll = (Model) =>
     });
   });
 
-exports.getOneById = (Model, popOptions) =>
+export const getOneById = (Model, popOptions) =>
   asyncWrapper(async (req, res, next) => {
     const { id: docID } = req.params;
 
@@ -43,7 +43,7 @@ exports.getOneById = (Model, popOptions) =>
     });
   });
 
-exports.getOneBySlug = (Model, popOptions) =>
+export const getOneBySlug = (Model, popOptions) =>
   asyncWrapper(async (req, res, next) => {
     const { slug } = req.params;
 
@@ -64,7 +64,7 @@ exports.getOneBySlug = (Model, popOptions) =>
     });
   });
 
-exports.createOne = (Model) =>
+export const createOne = (Model) =>
   asyncWrapper(async (req, res, next) => {
     const doc = await Model.create({ ...req.body });
 
@@ -74,7 +74,7 @@ exports.createOne = (Model) =>
     });
   });
 
-exports.updateOne = (Model) =>
+export const updateOne = (Model) =>
   asyncWrapper(async (req, res, next) => {
     const { id: docID } = req.params;
 
@@ -99,7 +99,7 @@ exports.updateOne = (Model) =>
     });
   });
 
-exports.deleteOne = (Model) =>
+export const deleteOne = (Model) =>
   asyncWrapper(async (req, res, next) => {
     const { id: docID } = req.params;
 
@@ -116,3 +116,14 @@ exports.deleteOne = (Model) =>
       doc: null,
     });
   });
+
+const factory = {
+  getAll,
+  getOneById,
+  getOneBySlug,
+  createOne,
+  updateOne,
+  deleteOne,
+};
+
+export default factory;
