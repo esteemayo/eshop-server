@@ -14,7 +14,7 @@ import CustomAPIError from '../errors/customApiError.js';
 import createSendToken from '../middlewares/createSendToken.js';
 import UnauthenticatedError from '../errors/unauthenticated.js';
 
-exports.register = asyncWrapper(async (req, res, next) => {
+export const register = asyncWrapper(async (req, res, next) => {
   const newUser = _.pick(req.body, [
     'img',
     'name',
@@ -31,7 +31,7 @@ exports.register = asyncWrapper(async (req, res, next) => {
   createSendToken(user, StatusCodes.CREATED, res);
 });
 
-exports.login = asyncWrapper(async (req, res, next) => {
+export const login = asyncWrapper(async (req, res, next) => {
   const { username, password } = req.body;
 
   if (!username || !password) {
@@ -46,7 +46,7 @@ exports.login = asyncWrapper(async (req, res, next) => {
   createSendToken(user, StatusCodes.OK, res);
 });
 
-exports.protect = asyncWrapper(async (req, res, next) => {
+export const protect = asyncWrapper(async (req, res, next) => {
   let token;
   const authHeader = req.headers.authorization;
 
@@ -89,7 +89,7 @@ exports.protect = asyncWrapper(async (req, res, next) => {
   next();
 });
 
-exports.restrictTo = (...roles) => {
+export const restrictTo = (...roles) => {
   return (req, res, next) => {
     if (!roles.includes(req.user.role)) {
       return next(
@@ -100,7 +100,7 @@ exports.restrictTo = (...roles) => {
   };
 };
 
-exports.forgotPassword = asyncWrapper(async (req, res, next) => {
+export const forgotPassword = asyncWrapper(async (req, res, next) => {
   const { email } = req.body;
 
   if (!email) {
@@ -160,7 +160,7 @@ exports.forgotPassword = asyncWrapper(async (req, res, next) => {
   }
 });
 
-exports.resetPassword = asyncWrapper(async (req, res, next) => {
+export const resetPassword = asyncWrapper(async (req, res, next) => {
   const hashedToken = crypto
     .createHash('sha256')
     .update(req.params.token)
@@ -186,7 +186,7 @@ exports.resetPassword = asyncWrapper(async (req, res, next) => {
   createSendToken(user, StatusCodes.OK, res);
 });
 
-exports.updatePassword = asyncWrapper(async (req, res, next) => {
+export const updatePassword = asyncWrapper(async (req, res, next) => {
   const { password, passwordConfirm, passwordCurrent } = req.body;
 
   const user = await User.findById(req.user.id).select('+password');
