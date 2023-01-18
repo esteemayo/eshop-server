@@ -2,12 +2,12 @@ import _ from 'lodash';
 import { StatusCodes } from 'http-status-codes';
 
 import User from '../models/User.js';
-import factory from './handlerFactory.js';
 import asyncWrapper from '../utils/asyncWrapper.js';
-import BadRequestError from '../errors/badRequest.js';
+import factory from './handlerFactory.js';
 import createSendToken from '../middlewares/createSendToken.js';
+import BadRequestError from '../errors/badRequest.js';
 
-exports.updateMe = asyncWrapper(async (req, res, next) => {
+export const updateMe = asyncWrapper(async (req, res, next) => {
   const { password, passwordConfirm } = req.body;
 
   if (password || passwordConfirm) {
@@ -32,7 +32,7 @@ exports.updateMe = asyncWrapper(async (req, res, next) => {
   createSendToken(updatedUser, StatusCodes.OK, res);
 });
 
-exports.deleteMe = asyncWrapper(async (req, res, next) => {
+export const deleteMe = asyncWrapper(async (req, res, next) => {
   await User.findByIdAndUpdate(req.user.id, { active: false });
 
   res.status(StatusCodes.NO_CONTENT).json({
@@ -41,7 +41,7 @@ exports.deleteMe = asyncWrapper(async (req, res, next) => {
   });
 });
 
-exports.getAllUsers = asyncWrapper(async (req, res, next) => {
+export const getAllUsers = asyncWrapper(async (req, res, next) => {
   const query = req.query.new;
 
   const users = query
@@ -56,7 +56,7 @@ exports.getAllUsers = asyncWrapper(async (req, res, next) => {
   });
 });
 
-exports.getUserStats = asyncWrapper(async (req, res, next) => {
+export const getUserStats = asyncWrapper(async (req, res, next) => {
   const date = new Date();
   const lastYear = new Date(date.setFullYear(date.getFullYear() - 1));
 
@@ -85,12 +85,12 @@ exports.getUserStats = asyncWrapper(async (req, res, next) => {
   });
 });
 
-exports.getMe = (req, res, next) => {
+export const getMe = (req, res, next) => {
   req.params.id = req.user.id;
   next();
 };
 
-exports.createUser = (req, res) => {
+export const createUser = (req, res) => {
   res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
     status: 'fail',
     message: `This route is not defined! Please use ${req.protocol}://${req.get(
@@ -99,7 +99,7 @@ exports.createUser = (req, res) => {
   });
 };
 
-exports.getUser = factory.getOneById(User);
+export const getUser = factory.getOneById(User);
 // do NOT update password with this
-exports.updateUser = factory.updateOne(User);
-exports.deleteUser = factory.deleteOne(User);
+export const updateUser = factory.updateOne(User);
+export const deleteUser = factory.deleteOne(User);
