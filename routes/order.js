@@ -1,7 +1,7 @@
-const express = require('express');
+import express from 'express';
 
-const authController = require('../controllers/authController');
-const orderController = require('../controllers/orderController');
+import * as authController from '../controllers/authController.js';
+import * as orderController from '../controllers/orderController.js';
 
 const router = express.Router();
 
@@ -26,4 +26,4 @@ router
   .patch(authController.restrictTo('admin'), orderController.updateOrder)
   .delete(orderController.deleteOrder);
 
-module.exports = router;
+export default router;
