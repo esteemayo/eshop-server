@@ -4,7 +4,7 @@ import Cart from '../models/Cart.js';
 import asyncWrapper from '../utils/asyncWrapper.js';
 import NotFoundError from '../errors/notFound.js';
 
-exports.getAllCarts = asyncWrapper(async (req, res, next) => {
+export const getAllCarts = asyncWrapper(async (req, res, next) => {
   const carts = await Cart.find();
 
   res.status(StatusCodes.OK).json({
@@ -15,7 +15,7 @@ exports.getAllCarts = asyncWrapper(async (req, res, next) => {
   });
 });
 
-exports.getCart = asyncWrapper(async (req, res, next) => {
+export const getCart = asyncWrapper(async (req, res, next) => {
   const { id: cartID } = req.params;
 
   const cart = await Cart.findById(cartID);
@@ -32,7 +32,7 @@ exports.getCart = asyncWrapper(async (req, res, next) => {
   });
 });
 
-exports.getUserCart = asyncWrapper(async (req, res, next) => {
+export const getUserCart = asyncWrapper(async (req, res, next) => {
   const { id: userID } = req.user;
 
   const cart = await Cart.find({ user: userID });
@@ -50,7 +50,7 @@ exports.getUserCart = asyncWrapper(async (req, res, next) => {
   });
 });
 
-exports.createCart = asyncWrapper(async (req, res, next) => {
+export const createCart = asyncWrapper(async (req, res, next) => {
   if (!req.body.user) req.body.user = req.user.id;
 
   const cart = await Cart.create({ ...req.body });
@@ -61,7 +61,7 @@ exports.createCart = asyncWrapper(async (req, res, next) => {
   });
 });
 
-exports.updateCart = asyncWrapper(async (req, res, next) => {
+export const updateCart = asyncWrapper(async (req, res, next) => {
   const { id: cartID } = req.params;
 
   const updCart = await Cart.findByIdAndUpdate(
@@ -85,7 +85,7 @@ exports.updateCart = asyncWrapper(async (req, res, next) => {
   });
 });
 
-exports.deleteCart = asyncWrapper(async (req, res, next) => {
+export const deleteCart = asyncWrapper(async (req, res, next) => {
   const { id: cartID } = req.params;
 
   const cart = await Cart.findByIdAndDelete(cartID);
