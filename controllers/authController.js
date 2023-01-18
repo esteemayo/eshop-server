@@ -1,18 +1,18 @@
-const _ = require('lodash');
-const crypto = require('crypto');
-const jwt = require('jsonwebtoken');
-const { promisify } = require('util');
-const { StatusCodes } = require('http-status-codes');
+import _ from 'lodash';
+import crypto from 'crypto';
+import jwt from 'jsonwebtoken';
+import { promisify } from 'util';
+import { StatusCodes } from 'http-status-codes';
 
-const User = require('../models/User');
-const sendEmail = require('../utils/email');
-const NotFoundError = require('../errors/notFound');
-const asyncWrapper = require('../utils/asyncWrapper');
-const ForbiddenError = require('../errors/forbidden');
-const BadRequestError = require('../errors/badRequest');
-const CustomAPIError = require('../errors/customApiError');
-const createSendToken = require('../middlewares/createSendToken');
-const UnauthenticatedError = require('../errors/unauthenticated');
+import User from '../models/User.js';
+import sendEmail from '../utils/email.js';
+import NotFoundError from '../errors/notFound.js';
+import asyncWrapper from '../utils/asyncWrapper.js';
+import ForbiddenError from '../errors/forbidden.js';
+import BadRequestError from '../errors/badRequest.js';
+import CustomAPIError from '../errors/customApiError.js';
+import createSendToken from '../middlewares/createSendToken.js';
+import UnauthenticatedError from '../errors/unauthenticated.js';
 
 exports.register = asyncWrapper(async (req, res, next) => {
   const newUser = _.pick(req.body, [
