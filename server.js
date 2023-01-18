@@ -9,33 +9,12 @@ process.on('uncaughtException', (err) => {
   process.exit(1);
 });
 
-dotenv.config({ path: './config.env' });
-const connectDB = require('./db/connectDb');
-const app = require('./app');
-
-// db local
-const db = process.env.DATABASE_LOCAL;
-
-// atlas mongo uri
-const mongoURI = process.env.DATABASE.replace(
-  '<PASSWORD>',
-  process.env.DATABASE_PASSWORD
-);
-
 app.set('port', process.env.PORT || 8080);
 
-const start = async () => {
-  try {
-    await connectDB(mongoURI);
-    const server = app.listen(app.get('port'), () =>
-      console.log(`Server running on port ${server.address().port}`.blue.bold)
-    );
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-start();
+const server = app.listen(app.get('port'), async () => {
+  await connectDB(mongoURI);
+  console.log(`Server running on port ${server.address().port}`.blue.bold)
+});
 
 process.on('unhandledRejection', (err) => {
   console.log('UNHANDLED REJECTION! 🔥 Shutting down...'.red.bold);
