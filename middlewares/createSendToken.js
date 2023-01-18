@@ -1,19 +1,16 @@
-const createSendToken = (user, statusCode, res) => {
+const createSendToken = (user, statusCode, req, res) => {
   const accessToken = user.generateAuthToken();
 
-  const cookieOptions = {
+  res.cookie('jwt', accessToken, {
     expires: new Date(
       Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
     ),
     httpOnly: true,
-    signed: true,
-  };
+    sameSite: true,
+    secure: req.secure || req.headers['x-forwarded-proto'] === 'https',
+    path: '/',
+  });
 
-  if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
-
-  res.cookie('jwt', accessToken, cookieOptions);
-
-  // remove password from output
   const { password, ...rest } = user._doc;
 
   res.status(statusCode).json({
@@ -23,4 +20,4 @@ const createSendToken = (user, statusCode, res) => {
   });
 };
 
-module.exports = createSendToken;
+export default createSendToken;
