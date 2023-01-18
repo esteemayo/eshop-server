@@ -1,8 +1,8 @@
 import stripe from 'stripe';
 import { StatusCodes } from 'http-status-codes';
 
-import asyncWrapper from '../utils/asyncWrapper';
-import CustomAPIError from '../errors/customApiError';
+import asyncWrapper from '../utils/asyncWrapper.js';
+import CustomAPIError from '../errors/customApiError.js';
 
 stripe(process.env.STRIPE_SECRET_KEY);
 
