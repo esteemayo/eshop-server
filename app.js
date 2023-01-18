@@ -1,27 +1,30 @@
-const express = require('express');
-const morgan = require('morgan');
-const mongoSanitize = require('express-mongo-sanitize');
-const xss = require('xss-clean');
-const cors = require('cors');
-const helmet = require('helmet');
-const hpp = require('hpp');
-const rateLimit = require('express-rate-limit');
-const compression = require('compression');
-const swaggerUI = require('swagger-ui-express');
-const YAML = require('yamljs');
-const cookieParser = require('cookie-parser');
+import express from 'express';
+import morgan from 'morgan';
+import mongoSanitize from 'express-mongo-sanitize';
+import xss from 'xss-clean';
+import cors from 'cors';
+import helmet from 'helmet';
+import hpp from 'hpp';
+import rateLimit from 'express-rate-limit';
+import compression from 'compression';
+import swaggerUI from 'swagger-ui-express';
+import YAML from 'yamljs';
+import cookieParser from 'cookie-parser';
+import dotenv  from 'dotenv';
 
 const swaggerDocument = YAML.load('./swagger.yaml');
 
 // requiring routes
-const errorHandlerMiddleware = require('./middlewares/errorHandler');
-const NotFoundError = require('./errors/notFound');
-const authRoute = require('./routes/auth');
-const userRoute = require('./routes/users');
-const productRoute = require('./routes/products');
-const cartRoute = require('./routes/carts');
-const orderRoute = require('./routes/order');
-const stripeRoute = require('./routes/stripe');
+import errorHandlerMiddleware from './middlewares/errorHandler.js';
+import NotFoundError from './errors/notFound.js';
+import authRoute from './routes/auth.js';
+import userRoute from './routes/users.js';
+import productRoute from './routes/products.js';
+import cartRoute from './routes/carts.js';
+import orderRoute from './routes/order.js';
+import stripeRoute from './routes/stripe.js';
+
+dotenv.config({ path: './config.env' });
 
 const app = express();
 console.log(app.get('env'));
@@ -99,4 +102,4 @@ app.all('*', (req, res, next) => {
 
 app.use(errorHandlerMiddleware);
 
-module.exports = app;
+export default app;
