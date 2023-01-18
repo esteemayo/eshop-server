@@ -1,5 +1,5 @@
-const { StatusCodes } = require('http-status-codes');
-const CustomAPIError = require('./customApiError');
+import { StatusCodes } from 'http-status-codes';
+import CustomAPIError from './customApiError.js';
 
 class ForbiddenError extends CustomAPIError {
   constructor(message) {
@@ -10,4 +10,4 @@ class ForbiddenError extends CustomAPIError {
   }
 }
 
-module.exports = ForbiddenError;
+export default ForbiddenError;
