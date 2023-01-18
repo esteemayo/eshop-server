@@ -1,33 +1,27 @@
-const dotenv = require('dotenv');
-const fs = require('fs');
-require('colors');
+import dotenv from 'dotenv';
+import path from 'path';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
+import 'colors';
 
 // models
-const User = require('../../models/User');
-const Cart = require('../../models/Cart');
-const Order = require('../../models/Order');
-const Product = require('../../models/Product');
+import User from '../../models/User.js';
+import Product from '../../models/Product.js';
+import Order from '../../models/Order.js';
 
 // MongoDB connection string
-const connectDB = require('../../db/connectDb');
+import connectDB from '../../db/connectDb.js';
 
 dotenv.config({ path: './config.env' });
 
-// db local
-const db = process.env.DATABASE_LOCAL;
-
-// atlas mongo uri
-const mongoURI = process.env.DATABASE.replace(
-  '<PASSWORD>',
-  process.env.DATABASE_PASSWORD
-);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // MongoDB connection
-connectDB(mongoURI);
+connectDB();
 
 // read JSON file
 const users = JSON.parse(fs.readFileSync(`${__dirname}/users.json`, 'utf-8'));
-// const carts = JSON.parse(fs.readFileSync(`${__dirname}/carts.json`, 'utf-8'));
 const orders = JSON.parse(fs.readFileSync(`${__dirname}/orders.json`, 'utf-8'));
 const products = JSON.parse(
   fs.readFileSync(`${__dirname}/products.json`, 'utf-8')
@@ -37,7 +31,6 @@ const products = JSON.parse(
 const loadData = async () => {
   try {
     await User.create(users, { validateBeforeSave: false });
-    // await Cart.create(carts);
     await Order.create(orders);
     await Product.create(products);
     console.log('👍👍👍👍👍👍👍👍 Done!'.green.bold);
@@ -57,7 +50,6 @@ const removeData = async () => {
   try {
     console.log('😢😢 Goodbye Data...'.blue.bold);
     await User.deleteMany();
-    // await Cart.deleteMany();
     await Order.deleteMany();
     await Product.deleteMany();
     console.log(
