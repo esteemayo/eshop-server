@@ -1,8 +1,10 @@
-const mongoose = require('mongoose');
-const NotFoundError = require('../errors/notFound');
+import mongoose from 'mongoose';
+import NotFoundError from '../errors/notFound.js';
 
-module.exports = (req, res, next) => {
+const validateObjectId = (req, res, next) => {
   if (!mongoose.Types.ObjectId.isValid)
     return next(new NotFoundError('Invalid ID'));
   next();
 };
+
+export default validateObjectId;
