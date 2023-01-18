@@ -1,8 +1,8 @@
-const { StatusCodes } = require('http-status-codes');
+import { StatusCodes } from 'http-status-codes';
 
-const Product = require('../models/Product');
-const NotFoundError = require('../errors/notFound');
-const asyncWrapper = require('../utils/asyncWrapper');
+import Product from '../models/Product.js';
+import asyncWrapper from '../utils/asyncWrapper.js';
+import NotFoundError from '../errors/notFound.js';
 
 exports.getAllProducts = asyncWrapper(async (req, res, next) => {
   const qNew = req.query.new;
