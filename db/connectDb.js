@@ -22,7 +22,6 @@ const connectDB = async () => {
 
 mongoose.connection.on('disconnected', () => {
   console.log('MongoDB disconnected'.strikethrough);
-  ;
-})
+});
 
 export default connectDB;
