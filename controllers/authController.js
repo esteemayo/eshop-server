@@ -7,7 +7,7 @@ import NotFoundError from '../errors/notFound.js';
 import sendEmail from '../utils/email.js';
 import asyncWrapper from '../utils/asyncWrapper.js';
 import BadRequestError from '../errors/badRequest.js';
-import createSendToken from '../middlewares/createSendToken.js';
+import createSendToken from '../utils/createSendToken.js';
 import CustomAPIError from '../errors/customApiError.js';
 import UnauthenticatedError from '../errors/unauthenticated.js';
 
