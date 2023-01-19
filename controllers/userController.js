@@ -57,27 +57,7 @@ export const getAllUsers = asyncWrapper(async (req, res, next) => {
 });
 
 export const getUserStats = asyncWrapper(async (req, res, next) => {
-  const date = new Date();
-  const lastYear = new Date(date.setFullYear(date.getFullYear() - 1));
-
-  const stats = await User.aggregate([
-    {
-      $match: {
-        createdAt: { $gte: lastYear },
-      },
-    },
-    {
-      $project: {
-        month: { $month: '$createdAt' },
-      },
-    },
-    {
-      $group: {
-        _id: '$month',
-        total: { $sum: 1 },
-      },
-    },
-  ]);
+  const stats = await User.getUserStats();
 
   res.status(StatusCodes.OK).json({
     status: 'success',
