@@ -25,6 +25,29 @@ export const getAllProducts = asyncWrapper(async (req, res, next) => {
   });
 });
 
+export const searchProduct = asyncWrapper(async (req, res, next) => {
+  const products = await Product.find(
+    {
+      $text: {
+        $search: req.query.q,
+      },
+    },
+    {
+      score: { $meta: 'textScore' },
+    }
+  )
+    .sort({
+      score: { $meta: 'textScore' },
+    })
+    .limit(5);
+
+  res.status(StatusCodes.OK).json({
+    status: 'success',
+    counts: products.length,
+    products,
+  });
+});
+
 export const getProductById = asyncWrapper(async (req, res, next) => {
   const { id: prodID } = req.params;
 
@@ -106,28 +129,5 @@ export const deleteProduct = asyncWrapper(async (req, res, next) => {
   res.status(StatusCodes.NO_CONTENT).json({
     status: 'success',
     product: null,
-  });
-});
-
-export const searchProduct = asyncWrapper(async (req, res, next) => {
-  const products = await Product.find(
-    {
-      $text: {
-        $search: req.query.q,
-      },
-    },
-    {
-      score: { $meta: 'textScore' },
-    }
-  )
-    .sort({
-      score: { $meta: 'textScore' },
-    })
-    .limit(5);
-
-  res.status(StatusCodes.OK).json({
-    status: 'success',
-    counts: products.length,
-    products,
   });
 });
