@@ -24,12 +24,10 @@ router
   .get(authMiddleware.restrictTo('admin'), userController.getAllUsers)
   .post(userController.createUser);
 
-router.use(authMiddleware.restrictTo('admin'));
-
 router
   .route('/:id')
   .get(userController.getUser)
-  .patch(userController.updateUser)
-  .delete(userController.deleteUser);
+  .patch(authMiddleware.restrictTo('admin'), userController.updateUser)
+  .delete(authMiddleware.restrictTo('admin'), userController.deleteUser);
 
 export default router;
