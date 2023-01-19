@@ -10,7 +10,8 @@ import compression from 'compression';
 import swaggerUI from 'swagger-ui-express';
 import YAML from 'yamljs';
 import cookieParser from 'cookie-parser';
-import dotenv  from 'dotenv';
+import dotenv from 'dotenv';
+import { StatusCodes } from 'http-status-codes';
 
 const swaggerDocument = YAML.load('./swagger.yaml');
 
@@ -85,7 +86,9 @@ app.use((req, res, next) => {
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
 app.get('/', (req, res) => {
-  res.send(`<h1>eCommerce API</h1><a href="/api-docs">Documentation</a>`);
+  res
+    .status(StatusCodes.OK)
+    .send(`<h1>eCommerce API</h1><a href="/api-docs">Documentation</a>`);
 });
 
 // api routes
