@@ -28,10 +28,6 @@ import stripeRoute from './routes/stripe.js';
 dotenv.config({ path: './config.env' });
 
 const app = express();
-/*
-"jest": "^26.5.3",
-"supertest": "^5.0.0"
-*/
 
 // global middleware
 // implement CORS
