@@ -128,7 +128,7 @@ export const resetPassword = asyncWrapper(async (req, res, next) => {
   user.resetPasswordExpires = undefined;
   await user.save();
 
-  createSendToken(user, StatusCodes.OK, res);
+  createSendToken(user, StatusCodes.OK, req, res);
 });
 
 export const updatePassword = asyncWrapper(async (req, res, next) => {
