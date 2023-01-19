@@ -37,7 +37,7 @@ console.log(app.get('env'));
 // global middleware
 // implement CORS
 app.use(cors());
-// // Access-Control-Allow-Origin
+// Access-Control-Allow-Origin
 app.options('*', cors());
 
 // set security HTTP headers
