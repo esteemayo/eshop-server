@@ -11,7 +11,7 @@ const protect = asyncWrapper(async (req, res, next) => {
 
   if (authHeader && authHeader.startsWith('Bearer')) {
     token = authHeader.split(' ')[1];
-  } else {
+  } else if (req.cookies.jwt) {
     token = req.cookies.jwt;
   }
 
