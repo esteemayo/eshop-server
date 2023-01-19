@@ -11,12 +11,17 @@ const createSendToken = (user, statusCode, req, res) => {
     path: '/',
   });
 
-  const { password, ...rest } = user._doc;
+  const { password, role, ...rest } = user._doc;
+
+  const details = {
+    accessToken,
+    ...rest,
+  };
 
   res.status(statusCode).json({
     status: 'success',
-    accessToken,
-    user: rest,
+    details,
+    role,
   });
 };
 
