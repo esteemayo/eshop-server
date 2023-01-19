@@ -53,7 +53,7 @@ export const updateMe = asyncWrapper(async (req, res, next) => {
     }
   );
 
-  createSendToken(updatedUser, StatusCodes.OK, res);
+  createSendToken(updatedUser, StatusCodes.OK, req, res);
 });
 
 export const deleteMe = asyncWrapper(async (req, res, next) => {
