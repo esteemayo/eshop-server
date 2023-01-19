@@ -42,7 +42,7 @@ export const login = asyncWrapper(async (req, res, next) => {
     return next(new UnauthenticatedError('Incorrect username or password'));
   }
 
-  createSendToken(user, StatusCodes.OK, res);
+  createSendToken(user, StatusCodes.OK, req, res);
 });
 
 export const forgotPassword = asyncWrapper(async (req, res, next) => {
