@@ -49,13 +49,13 @@ export const searchProduct = asyncWrapper(async (req, res, next) => {
 });
 
 export const getProductById = asyncWrapper(async (req, res, next) => {
-  const { id: prodID } = req.params;
+  const { id: productID } = req.params;
 
-  const product = await Product.findById(prodID);
+  const product = await Product.findById(productID);
 
   if (!product) {
     return next(
-      new NotFoundError(`No product found with the given ID: ${prodID}`)
+      new NotFoundError(`No product found with the given ID: ${productID}`)
     );
   }
 
@@ -92,10 +92,10 @@ export const createProduct = asyncWrapper(async (req, res, next) => {
 });
 
 export const updateProduct = asyncWrapper(async (req, res, next) => {
-  const { id: prodID } = req.params;
+  const { id: productID } = req.params;
 
   const updProduct = await Product.findByIdAndUpdate(
-    prodID,
+    productID,
     { $set: req.body },
     {
       new: true,
@@ -105,7 +105,7 @@ export const updateProduct = asyncWrapper(async (req, res, next) => {
 
   if (!updProduct) {
     return next(
-      new NotFoundError(`No product found with the given ID: ${prodID}`)
+      new NotFoundError(`No product found with the given ID: ${productID}`)
     );
   }
 
@@ -116,13 +116,13 @@ export const updateProduct = asyncWrapper(async (req, res, next) => {
 });
 
 export const deleteProduct = asyncWrapper(async (req, res, next) => {
-  const { id: prodID } = req.params;
+  const { id: productID } = req.params;
 
-  const product = await Product.findByIdAndDelete(prodID);
+  const product = await Product.findByIdAndDelete(productID);
 
   if (!product) {
     return next(
-      new NotFoundError(`No product found with the given ID: ${prodID}`)
+      new NotFoundError(`No product found with the given ID: ${productID}`)
     );
   }
 
