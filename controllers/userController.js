@@ -7,6 +7,30 @@ import factory from './handlerFactory.js';
 import createSendToken from '../utils/createSendToken.js';
 import BadRequestError from '../errors/badRequest.js';
 
+export const getAllUsers = asyncWrapper(async (req, res, next) => {
+  const query = req.query.new;
+
+  const users = query
+    ? await User.find().sort('-_id').limit(5)
+    : await User.find();
+
+  res.status(StatusCodes.OK).json({
+    status: 'success',
+    requestedAt: req.requestTime,
+    counts: users.length,
+    users,
+  });
+});
+
+export const getUserStats = asyncWrapper(async (req, res, next) => {
+  const stats = await User.getUserStats();
+
+  res.status(StatusCodes.OK).json({
+    status: 'success',
+    stats,
+  });
+});
+
 export const updateMe = asyncWrapper(async (req, res, next) => {
   const { password, passwordConfirm } = req.body;
 
@@ -38,30 +62,6 @@ export const deleteMe = asyncWrapper(async (req, res, next) => {
   res.status(StatusCodes.NO_CONTENT).json({
     status: 'success',
     user: null,
-  });
-});
-
-export const getAllUsers = asyncWrapper(async (req, res, next) => {
-  const query = req.query.new;
-
-  const users = query
-    ? await User.find().sort('-_id').limit(5)
-    : await User.find();
-
-  res.status(StatusCodes.OK).json({
-    status: 'success',
-    requestedAt: req.requestTime,
-    counts: users.length,
-    users,
-  });
-});
-
-export const getUserStats = asyncWrapper(async (req, res, next) => {
-  const stats = await User.getUserStats();
-
-  res.status(StatusCodes.OK).json({
-    status: 'success',
-    stats,
   });
 });
 
