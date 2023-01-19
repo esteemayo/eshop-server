@@ -43,7 +43,7 @@ export const updateMe = asyncWrapper(async (req, res, next) => {
     );
   }
 
-  const filterBody = _.pick(req.body, ['name', 'username', 'email']);
+  const filterBody = _.pick(req.body, ['img', 'name', 'username', 'email']);
   const updatedUser = await User.findByIdAndUpdate(
     req.user.id,
     { $set: filterBody },
