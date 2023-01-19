@@ -4,7 +4,7 @@ import { StatusCodes } from 'http-status-codes';
 import User from '../models/User.js';
 import asyncWrapper from '../utils/asyncWrapper.js';
 import factory from './handlerFactory.js';
-import createSendToken from '../middlewares/createSendToken.js';
+import createSendToken from '../utils/createSendToken.js';
 import BadRequestError from '../errors/badRequest.js';
 
 export const updateMe = asyncWrapper(async (req, res, next) => {
