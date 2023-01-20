@@ -95,6 +95,8 @@ export const createProduct = asyncWrapper(async (req, res, next) => {
 export const updateProduct = asyncWrapper(async (req, res, next) => {
   const { id: productID } = req.params;
 
+  if (req.body.title) req.body.slug = slugify(req.body.title, { lower: true });
+
   const updProduct = await Product.findByIdAndUpdate(
     productID,
     { $set: req.body },
