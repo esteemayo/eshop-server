@@ -1,3 +1,4 @@
+import slugify from 'slugify';
 import { StatusCodes } from 'http-status-codes';
 
 import Product from '../models/Product.js';
