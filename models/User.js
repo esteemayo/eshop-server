@@ -90,16 +90,9 @@ userSchema.pre(/^find/, function (next) {
 });
 
 userSchema.methods.generateAuthToken = function () {
-  return jwt.sign(
-    {
-      id: this._id,
-      img: this.img,
-      role: this.role,
-      username: this.username,
-    },
-    process.env.JWT_SECRET,
-    { expiresIn: process.env.JWT_EXPIRES_IN }
-  );
+  return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRES_IN,
+  });
 };
 
 userSchema.methods.comparePassword = async function (candidatePassword) {
