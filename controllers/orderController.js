@@ -104,7 +104,7 @@ export const getMonthlyIncome = asyncWrapper(async (req, res, next) => {
   const income = await Order.aggregate([
     {
       $match: {
-        createdAt: { $gte: lastYear },
+        createdAt: { $gte: prevMonth },
         ...(productId && { products: { $elemMatch: { productId } } }),
       },
     },
