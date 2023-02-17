@@ -100,7 +100,6 @@ export const getMonthlyIncome = asyncWrapper(async (req, res, next) => {
   const date = new Date();
   const lastMonth = new Date(date.setMonth(date.getMonth() - 1));
   const prevMonth = new Date(new Date().setMonth(lastMonth.getMonth() - 1));
-  const lastYear = new Date(date.setFullYear(date.getFullYear() - 1))
 
   const income = await Order.aggregate([
     {
