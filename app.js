@@ -12,6 +12,7 @@ import YAML from 'yamljs';
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import { StatusCodes } from 'http-status-codes';
+import 'colors'
 
 const swaggerDocument = YAML.load('./swagger.yaml');
 
